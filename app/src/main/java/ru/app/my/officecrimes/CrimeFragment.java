@@ -18,7 +18,7 @@ import android.widget.EditText;
 import static android.widget.CompoundButton.*;
 
 /**
- * Page 164
+ * Page 176
  */
 public class CrimeFragment extends Fragment {
     //public class CrimeFragment extends AppCompatActivity {
@@ -52,26 +52,18 @@ public class CrimeFragment extends Fragment {
             }
         });
 
-
         mTittleText = (EditText) v.findViewById(R.id.crime_title);
         mTittleText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                TODO - доделать
-            }
-
-            @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mCrime.setTitle(s.toString());
-
             }
-
             @Override
-            public void afterTextChanged(Editable s) {
-//                TODO - доделать
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void afterTextChanged(Editable s) { }
         });
+
         return v;
     }
 
