@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes;
+package ru.app.my.officecrimes.entities;
 
 // Dmitry Koltovich, Янв., 2018.
 

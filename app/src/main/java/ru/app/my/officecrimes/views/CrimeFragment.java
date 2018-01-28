@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes;
+package ru.app.my.officecrimes.views;
 
 // Dmitry Koltovich, Янв., 2018.
 
@@ -15,10 +15,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import ru.app.my.officecrimes.R;
+import ru.app.my.officecrimes.entities.Crime;
+
 import static android.widget.CompoundButton.*;
 
 /**
- * Page 176
+ * Page 188
  */
 public class CrimeFragment extends Fragment {
     //public class CrimeFragment extends AppCompatActivity {
