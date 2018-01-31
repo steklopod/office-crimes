@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import ru.app.my.officecrimes.R;
 
 /**
- * CrimeActivity
- * Пример хардкода без наследования. НЕ ИСПОЛЬЗУЕТСЯ.
+ * Пример хардкода без наследования.
+ *  >>>! НЕ ИСПОЛЬЗУЕТСЯ.
+ * Использовать @link ru.app.my.officecrimes.views.CrimeFragment.class
  */
+
+@Deprecated
 public class FragmentHardcode extends AppCompatActivity {
 
     @Override

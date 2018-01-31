@@ -10,8 +10,8 @@ import java.util.UUID;
 
 /**
  * Хранилище-синглтон (in-memory) для хранения преступлений.
- *
  */
+
 public class CrimeLAb {
     private static CrimeLAb sCrimeLAb;
     private List<Crime> mCrimes;

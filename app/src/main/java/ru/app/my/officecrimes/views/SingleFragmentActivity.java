@@ -14,10 +14,10 @@ import ru.app.my.officecrimes.R;
  */
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
-    protected abstract Fragment createFragment();
+    public abstract Fragment createFragment();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 

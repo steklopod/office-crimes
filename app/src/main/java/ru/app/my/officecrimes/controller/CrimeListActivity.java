@@ -4,12 +4,13 @@ package ru.app.my.officecrimes.controller;
 
 import android.support.v4.app.Fragment;
 
+import ru.app.my.officecrimes.views.CrimeListFragment;
 import ru.app.my.officecrimes.views.SingleFragmentActivity;
 
 public class CrimeListActivity extends SingleFragmentActivity {
 
     @Override
-    protected Fragment createFragment() {
+    public Fragment createFragment() {
         return new CrimeListFragment();
     }
 
