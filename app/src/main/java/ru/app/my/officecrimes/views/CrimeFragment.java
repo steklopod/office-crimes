@@ -20,9 +20,6 @@ import ru.app.my.officecrimes.entities.Crime;
 
 import static android.widget.CompoundButton.*;
 
-/**
- * Page 188
- */
 public class CrimeFragment extends Fragment {
     //public class CrimeFragment extends AppCompatActivity {
     private Crime mCrime;

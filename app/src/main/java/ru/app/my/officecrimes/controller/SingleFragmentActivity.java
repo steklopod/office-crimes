@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes.views;
+package ru.app.my.officecrimes.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +12,6 @@ import ru.app.my.officecrimes.R;
 /**
  * Универсальный код для создания фрагмента.
  */
-
 public abstract class SingleFragmentActivity extends AppCompatActivity {
     public abstract Fragment createFragment();
 
