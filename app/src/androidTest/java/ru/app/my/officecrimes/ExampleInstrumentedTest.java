@@ -7,9 +7,6 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.time.Instant;
-import java.util.Date;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -27,10 +24,4 @@ public class ExampleInstrumentedTest {
         assertEquals("ru.app.my.officecrimes", appContext.getPackageName());
     }
 
-    @Test
-    public void testTime(){
-//        TODO
-        Date date = new Date();
-        Instant time = date.toInstant();
-    }
 }
