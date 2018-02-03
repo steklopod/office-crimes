@@ -27,7 +27,6 @@ public class CrimePagerActivity extends AppCompatActivity {
     public static Intent newIntent(Context packageContext, UUID crimeId) {
         Intent intent = new Intent(packageContext, CrimePagerActivity.class);
         intent.putExtra(EXTRA_CRIME_ID, crimeId);
-
         return intent;
     }
 
@@ -40,12 +39,14 @@ public class CrimePagerActivity extends AppCompatActivity {
 
         mCrimes = CrimeLAb.getInstance(this).getCrimes();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
+
         mViewPager.setAdapter(new FragmentStatePagerAdapter(supportFragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                Crime crime =  mCrimes.get(position);;
+                Crime crime = mCrimes.get(position);
                 return CrimeFragment.newInstance(crime.getId());
             }
+
             @Override
             public int getCount() {
                 return mCrimes.size();
@@ -58,8 +59,9 @@ public class CrimePagerActivity extends AppCompatActivity {
                 break;
             }
         }
-
     }
 
+    public void goToFirstCrime() {
+    }
 
 }
