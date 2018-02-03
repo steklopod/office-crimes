@@ -1,6 +1,6 @@
 package ru.app.my.officecrimes.views;
 
-import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,20 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.List;
-import java.util.Locale;
 
 import ru.app.my.officecrimes.R;
+import ru.app.my.officecrimes.controller.CrimeActivity;
 import ru.app.my.officecrimes.entities.Crime;
 import ru.app.my.officecrimes.entities.CrimeLAb;
-import ru.app.my.officecrimes.entities.utils.TimeUtil;
-//  Page 198
-
+import ru.app.my.officecrimes.utils.TimeUtil;
+//  Page 233
 /**
  * Класс для создания списка прокрутки.
  */
@@ -34,6 +29,34 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
+        mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
+        mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        updateUI();
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    private void updateUI() {
+        CrimeLAb crimeLAb = CrimeLAb.getInstance(getActivity());
+        List<Crime> crimes = crimeLAb.getCrimes();
+        if (mAdapter == null) {
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        } else{
+            mAdapter.notifyDataSetChanged();
+        }
+    }
 
     /**
      * Вложенный класс, заполняющий макет
@@ -53,33 +76,25 @@ public class CrimeListFragment extends Fragment {
             mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
 
-        @TargetApi(Build.VERSION_CODES.O)
-        public String getRussianDateTime(){
-            String date =
-                    DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
-                            .withLocale(new Locale("ru"))
-                            .format(LocalDate.of(2014, 2, 28));
-            System.out.println(date);
-            return date;
-        }
-
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void bind(Crime crime) {
             mCrime = crime;
-            System.err.println(mCrime.getTitle());
             mTitleTextView.setText(mCrime.getTitle());
-            String date =  TimeUtil.getDateAsString(mCrime.getDate());
-//            String date =  mTimeUtil.getDateAsString(mCrime.getDate());
+            String date = TimeUtil.getDateAsString(mCrime.getDate());
             mDateTextView.setText(date);
             mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
         @Override
         public void onClick(View v) {
-//            Log.i("CLICK", "Кликнули по Холдеру");
-            Toast.makeText(getActivity(),
-                    mCrime.getTitle() + " выбрано! ", Toast.LENGTH_SHORT)
-                    .show();
+//            Toast.makeText(getActivity(),
+//                    mCrime.getTitle() + " выбрано! ", Toast.LENGTH_SHORT)
+//                    .show();
+
+//            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            startActivity(intent);
         }
     }
 
@@ -88,7 +103,6 @@ public class CrimeListFragment extends Fragment {
      */
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
         private List<Crime> mCrimes;
-
         public CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
         }
@@ -110,24 +124,5 @@ public class CrimeListFragment extends Fragment {
         public int getItemCount() {
             return mCrimes.size();
         }
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
-        mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
-        mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        updateUI();
-        return view;
-    }
-
-    private void updateUI() {
-        CrimeLAb crimeLAb = CrimeLAb.getInstance(getActivity());
-        List<Crime> crimes = crimeLAb.getCrimes();
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
     }
 }

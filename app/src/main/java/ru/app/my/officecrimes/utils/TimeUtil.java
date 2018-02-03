@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes.entities.utils;
+package ru.app.my.officecrimes.utils;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
