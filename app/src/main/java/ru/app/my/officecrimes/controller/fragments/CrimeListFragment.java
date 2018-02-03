@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes.views;
+package ru.app.my.officecrimes.controller.fragments;
 
 import android.content.Intent;
 import android.os.Build;
@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.app.my.officecrimes.R;
-import ru.app.my.officecrimes.controller.CrimeActivity;
+import ru.app.my.officecrimes.controller.CrimePagerActivity;
 import ru.app.my.officecrimes.entities.Crime;
 import ru.app.my.officecrimes.entities.CrimeLAb;
 import ru.app.my.officecrimes.utils.TimeUtil;
-//  Page 233
+//  Page 238
 /**
  * Класс для создания списка прокрутки.
  */
@@ -76,7 +77,6 @@ public class CrimeListFragment extends Fragment {
             mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
@@ -87,13 +87,22 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+//            1-я версия
 //            Toast.makeText(getActivity(),
 //                    mCrime.getTitle() + " выбрано! ", Toast.LENGTH_SHORT)
 //                    .show();
-
+//            2-я версия
 //            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+//            3-я версия
+//            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
 
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+//            4-я PagerView
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
+
+            Log.i("CrimeListFragment",
+                    "CrimeHolder  > onClick(), getActivity: " + getActivity().toString());
+            Log.i("CrimeListFragment",
+                    "CrimeHolder  > onClick(), INTENT = : " + intent.toString());
             startActivity(intent);
         }
     }

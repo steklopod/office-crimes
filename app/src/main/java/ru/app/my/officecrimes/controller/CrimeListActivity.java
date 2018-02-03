@@ -4,7 +4,8 @@ package ru.app.my.officecrimes.controller;
 
 import android.support.v4.app.Fragment;
 
-import ru.app.my.officecrimes.views.CrimeListFragment;
+import ru.app.my.officecrimes.controller.fragments.CrimeListFragment;
+import ru.app.my.officecrimes.controller.fragments.SingleFragmentActivity;
 
 public class CrimeListActivity extends SingleFragmentActivity {
     @Override

@@ -3,6 +3,7 @@ package ru.app.my.officecrimes.entities;
 // Dmitry Koltovich, Янв., 2018.
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class CrimeLAb {
             crime.setSolved(i % 2 == 0);
             mCrimes.add(crime);
         }
+        System.err.println(mCrimes);
+
     }
 
     public List<Crime> getCrimes() {

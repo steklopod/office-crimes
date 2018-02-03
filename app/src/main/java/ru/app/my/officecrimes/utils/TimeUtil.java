@@ -1,7 +1,7 @@
 package ru.app.my.officecrimes.utils;
 
+import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.text.DateFormat;
@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 // Dmitry Koltovich, Февр., 2018.
 public class TimeUtil {
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @TargetApi(Build.VERSION_CODES.O)
     public static String getDateAsString(Date mDate) {
         Log.d("timeDate", "mDate = " + mDate);
 

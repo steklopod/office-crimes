@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes.controller;
+package ru.app.my.officecrimes.controller.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,4 +29,5 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
 }

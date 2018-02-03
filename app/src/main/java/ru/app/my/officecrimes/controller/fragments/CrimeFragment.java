@@ -1,11 +1,9 @@
-package ru.app.my.officecrimes.views;
+package ru.app.my.officecrimes.controller.fragments;
 
 // Dmitry Koltovich, Янв., 2018.
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,7 +32,6 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSolvedCheckBox;
     private static final String ARG_CRIME_ID = "crime_id";
 
-
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
         args.putSerializable(ARG_CRIME_ID, crimeId);
@@ -52,10 +49,10 @@ public class CrimeFragment extends Fragment {
 //        UUID crimeID = (UUID) getActivity().getIntent()
 //                .getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
         UUID crimeID = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
+
         mCrime = CrimeLAb.getInstance(getActivity()).getCrime(crimeID);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,

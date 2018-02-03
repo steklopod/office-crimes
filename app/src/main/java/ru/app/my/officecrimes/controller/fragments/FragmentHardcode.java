@@ -1,4 +1,4 @@
-package ru.app.my.officecrimes.views;
+package ru.app.my.officecrimes.controller.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +10,7 @@ import ru.app.my.officecrimes.R;
 /**
  * Пример хардкода без наследования.
  *  >>>! НЕ ИСПОЛЬЗУЕТСЯ.
- * Использовать @link ru.app.my.officecrimes.views.CrimeFragment.class
+ * Использовать @link ../controller.frgments.CrimeFragment.class
  */
 
 @Deprecated
