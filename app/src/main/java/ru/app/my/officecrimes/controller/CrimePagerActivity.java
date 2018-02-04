@@ -61,7 +61,4 @@ public class CrimePagerActivity extends AppCompatActivity {
         }
     }
 
-    public void goToFirstCrime() {
-    }
-
 }

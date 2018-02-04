@@ -22,7 +22,6 @@ import ru.app.my.officecrimes.controller.CrimePagerActivity;
 import ru.app.my.officecrimes.entities.Crime;
 import ru.app.my.officecrimes.entities.CrimeLAb;
 import ru.app.my.officecrimes.utils.TimeUtil;
-//  Page 238
 /**
  * Класс для создания списка прокрутки.
  */
